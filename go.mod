@@ -1,4 +1,4 @@
-module github.com/Arnouux/distributed-segmentable-requests
+module github.com/Arnouux/distributed-segmentable-requests-test
 
 go 1.16
 
