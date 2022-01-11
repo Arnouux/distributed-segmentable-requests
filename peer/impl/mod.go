@@ -6,18 +6,9 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-
-	"go.dedis.ch/cs438/peer"
 )
 
 type Node struct {
-	peer.Peer
-
-	conf peer.Configuration
-}
-
-func NewPeer(conf peer.Configuration) peer.Peer {
-	return Node{}
 }
 
 func (n *Node) SendPrepDwnldResp(dest string, relays map[uint]string) error {
