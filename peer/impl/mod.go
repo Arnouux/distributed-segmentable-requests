@@ -27,6 +27,7 @@ func (n *Node) SendPrepDwnldResp(dest string, relays map[uint]string) error {
 	}
 
 	time := time.Now()
+
 	// Ping the server
 	// ping artepweb-vh.akamaihd.net
 	url := "arteptweb-vh.akamaihd.net"
