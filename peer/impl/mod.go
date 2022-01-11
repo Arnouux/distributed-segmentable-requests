@@ -11,6 +11,10 @@ import (
 type Node struct {
 }
 
+func NewNode() *Node {
+	return &Node{}
+}
+
 func (n *Node) SendPrepDwnldResp(dest string, relays map[uint]string) error {
 	//TODO send PrepareDownloadReply to dest &&
 	//Todo: stats on how fast get data from url server (no more than upperbound bytes)

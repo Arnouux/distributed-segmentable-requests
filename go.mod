@@ -3,6 +3,7 @@ module github.com/Arnouux/distributed-segmentable-requests
 go 1.16
 
 require (
+	github.com/Arnouux/distributed-segmentable-requests-test v0.0.0-20220111170357-47c2609229ad // indirect
 	github.com/DistributedClocks/GoVector v0.0.0-20210402100930-db949c81a0af
 	github.com/rs/xid v1.2.1
 	github.com/rs/zerolog v1.20.0
