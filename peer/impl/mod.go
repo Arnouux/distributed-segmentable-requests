@@ -1,6 +1,6 @@
 package impl
 
-// file should be on root
+// file should be on root as final
 
 import (
 	"fmt"
