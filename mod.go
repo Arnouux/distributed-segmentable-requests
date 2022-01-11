@@ -1,7 +1,5 @@
 package impl
 
-// file should be on root
-
 import (
 	"fmt"
 	"net/http"
