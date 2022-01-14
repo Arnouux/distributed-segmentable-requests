@@ -58,7 +58,7 @@ func DownloadPartFromExternal(url string, start uint, end uint, IOoutput io.Writ
 
 func TestExternalBandwidth(url string, upperBound uint) float32 {
 	t0 := time.Now().Unix()
-	downloadPartFromExternal(url, 0, upperBound, io.Discard, io.Discard)
+	DownloadPartFromExternal(url, 0, upperBound, io.Discard, io.Discard)
 	t1 := time.Now().Unix()
 	return float32(upperBound) / float32(t0-t1)
 }
