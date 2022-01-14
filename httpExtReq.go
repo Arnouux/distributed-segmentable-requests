@@ -63,14 +63,14 @@ func testExternalBandwidth(url string, upperBound uint) float32 {
 	return float32(upperBound) / float32(t0-t1)
 }
 
-func (n *node) server_to_test(upperBound uint) {
+func server_to_test(upperBound uint) {
 	http.HandleFunc("/stats", func(w http.ResponseWriter, r *http.Request) {
 		for i := 0; i < int(upperBound); i++ {
 			fmt.Fprintf(w, "A")
 		}
 	})
 
-	if err := http.ListenAndServe(n.GetAddress()+":8080", nil); err != nil {
+	if err := http.ListenAndServe("127.0.0.1:8080", nil); err != nil {
 		//we probably already launched it
 		println(err, "while launching server for linkState test")
 	}
