@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func getFileSize(url string) (int64, error) {
+func GetFileSize(url string) (int64, error) {
 	//shamelessy from https://www.socketloop.com/tutorials/golang-get-download-file-size
 
 	resp, err := http.Head(url)
@@ -33,7 +33,7 @@ func getFileSize(url string) (int64, error) {
 
 }
 
-func downloadPartFromExternal(url string, start uint, end uint, IOoutput io.Writer, toStorageCopy io.Writer) error {
+func DownloadPartFromExternal(url string, start uint, end uint, IOoutput io.Writer, toStorageCopy io.Writer) error {
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Add("Range", "bytes="+fmt.Sprint(start)+"-"+fmt.Sprint(end))
 	fmt.Println(req)
@@ -56,14 +56,14 @@ func downloadPartFromExternal(url string, start uint, end uint, IOoutput io.Writ
 	return err
 }
 
-func testExternalBandwidth(url string, upperBound uint) float32 {
+func TestExternalBandwidth(url string, upperBound uint) float32 {
 	t0 := time.Now().Unix()
 	downloadPartFromExternal(url, 0, upperBound, io.Discard, io.Discard)
 	t1 := time.Now().Unix()
 	return float32(upperBound) / float32(t0-t1)
 }
 
-func server_to_test(upperBound uint) {
+func Server_to_test(upperBound uint) {
 	http.HandleFunc("/stats", func(w http.ResponseWriter, r *http.Request) {
 		for i := 0; i < int(upperBound); i++ {
 			fmt.Fprintf(w, "A")
