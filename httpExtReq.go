@@ -1,6 +1,7 @@
 package impl
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -51,7 +52,7 @@ func DownloadPartFromExternal(url string, start uint, end uint, IOoutput io.Writ
 	r2 := io.TeeReader(r, toStorageCopy)
 	written, err := io.Copy(IOoutput, r2) //check io.PipeWriter to tee data into storage & to requesting node
 	if written != int64(end-start) {
-		println("did Not Download requested amount")
+		return errors.New("did Not Download requested amount")
 	}
 	return err
 }
