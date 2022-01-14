@@ -49,6 +49,8 @@ func DownloadPartFromExternal(url string, start uint, end uint, IOoutput io.Writ
 	defer resp.Body.Close()
 
 	r := resp.Body
+	fmt.Println(r)
+	
 	r2 := io.TeeReader(r, toStorageCopy)
 	written, err := io.Copy(IOoutput, r2) //check io.PipeWriter to tee data into storage & to requesting node
 	if written != int64(end-start) {
