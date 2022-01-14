@@ -49,8 +49,6 @@ func DownloadPartFromExternal(url string, start uint, end uint, IOoutput io.Writ
 	defer resp.Body.Close()
 
 	r := resp.Body
-	fmt.Println(r)
-	
 	r2 := io.TeeReader(r, toStorageCopy)
 	written, err := io.Copy(IOoutput, r2) //check io.PipeWriter to tee data into storage & to requesting node
 	if written != int64(end-start) {
@@ -63,6 +61,8 @@ func TestExternalBandwidth(url string, upperBound uint) float32 {
 	t0 := time.Now().Unix()
 	DownloadPartFromExternal(url, 0, upperBound, io.Discard, io.Discard)
 	t1 := time.Now().Unix()
+	
+	fmt.Println(t0, t1)
 	return float32(upperBound) / float32(t0-t1)
 }
 
