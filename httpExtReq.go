@@ -63,7 +63,7 @@ func TestExternalBandwidth(url string, upperBound uint) float32 {
 	t1 := time.Now().UnixNano()
 	
 	fmt.Println(t0, t1)
-	return float32(upperBound) / (float32(t0-t1) / 10e-9)
+	return float32(upperBound) / (float32(t1-t0) / 10e-9)
 }
 
 func Server_to_test(upperBound uint) {
